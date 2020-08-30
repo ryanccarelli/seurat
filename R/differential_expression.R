@@ -1379,12 +1379,15 @@ MASTDETest <- function(
   summaryDt <- summaryCond$datatable
   print(summaryDt)
   write.csv(data.frame(summaryDt), 'fullsummary.csv')
-  test <- MAST::logFC(zlmCond)
-  print(test)
+  logfc <- MAST::logFC(zlmCond)
+  write.csv(data.frame(logfc), 'logfc.csv')
   covariancec <- MAST::vcov(zlmCond, 'C')
   covarianced <- MAST::vcov(zlmCond, 'D')
   write.csv(data.frame(covariancec), 'covariancec.csv')
   write.csv(data.frame(covarianced), 'covarianced.csv')
+  varlogfc<- MAST::varLogFC(zlmCond)
+  write.csv(data.frame(varlogfc), 'varlogfc.csv')
+
 
   # fcHurdle <- merge(
   #   summaryDt[contrast=='conditionGroup2' & component=='H', .(primerid, `Pr(>Chisq)`)], #hurdle P values
