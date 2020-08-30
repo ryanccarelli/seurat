@@ -1375,7 +1375,6 @@ MASTDETest <- function(
     object = paste0(" ~ ", paste(latent.vars.names, collapse = "+"))
   )
   zlmCond <- MAST::zlm(formula = fmla, sca = sca, ...)
-  write.csv(data.frame(zlmCond), 'zlmcond.csv')
   summaryCond <- summary(object = zlmCond, doLRT = 'conditionGroup2')
   summaryDt <- summaryCond$datatable
   write.csv(data.frame(summaryDt), 'fullsummary.csv')
