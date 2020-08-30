@@ -1387,7 +1387,8 @@ MASTDETest <- function(
   # p_val <- subset(summaryDt, component == "H")[, 4]
   # genes.return <- subset(summaryDt, component == "H")[, 1]
   to.return <- data.frame(p_val, row.names = genes.return)
-  return(to.return)
+  # return(to.return)
+  return(summaryDt)
 }
 
 # compare two negative binomial regression models
