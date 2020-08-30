@@ -1391,13 +1391,13 @@ MASTDETest <- function(
   # fcHurdle[,fdr:=p.adjust(`Pr(>Chisq)`, 'fdr')]
   p_val <- summaryDt[summaryDt[, "component"] == "H", 4]
   genes.return <- summaryDt[summaryDt[, "component"] == "H", 1]
-  varlogfc <- logfc2[c("varLogFC")]
-  varlogfcgenes.return <- logfc2[c("primerid")]
+  varlogfc <- logfc2[logfc2[,"contrast"]=="conditionGroup2", 4]
+  varlogfcgenes.return <- logfc2[logfc2[,"contrast"]=="conditionGroup2", 1]
   print('subset varlogfc')
   # p_val <- subset(summaryDt, component == "H")[, 4]
   # genes.return <- subset(summaryDt, component == "H")[, 1]
   to.return <- data.frame(p_val, row.names = genes.return)
-  to.return2 <- data.frame(varlogfc, row.names=varlogfcgenes.return)
+  to.return2 <- data.frame(varlogfc, row.names = varlogfcgenes.return)
   print('make dataframe')
   to.return <- merge(to.return, to.return2, by="row.names") 
   print('merge dataframe')
