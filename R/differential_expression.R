@@ -1380,17 +1380,9 @@ MASTDETest <- function(
   write.csv(data.frame(summaryDt), 'fullsummary.csv')
   print('summarized')
   logfc <- MAST::logFC(zlmCond)
-  print('logfc')
   logfc2 <- MAST::getLogFC(zlmCond)
   print('logfc2')
-  write.csv(data.frame(logfc), 'logfc.csv')
-  write.csv(logfc2, 'logfc2.csv')
-  print('saved')
-  covariancec <- MAST::vcov(zlmCond, 'H')
-  write.csv(data.frame(covariancec), 'covarianceh.csv')
-  varlogfc<- MAST::varLogFC(zlmCond)
-  write.csv(data.frame(varlogfc), 'varlogfc.csv')
-
+  # covariancec <- MAST::vcov(zlmCond, 'C')
 
   # fcHurdle <- merge(
   #   summaryDt[contrast=='conditionGroup2' & component=='H', .(primerid, `Pr(>Chisq)`)], #hurdle P values
@@ -1399,9 +1391,17 @@ MASTDETest <- function(
   # fcHurdle[,fdr:=p.adjust(`Pr(>Chisq)`, 'fdr')]
   p_val <- summaryDt[summaryDt[, "component"] == "H", 4]
   genes.return <- summaryDt[summaryDt[, "component"] == "H", 1]
+  varlogfc <- logfc2[c("varLogFC")]
+  varlogfcgenes.return <- logfc2[c("primerid")]
+  print('subset varlogfc')
   # p_val <- subset(summaryDt, component == "H")[, 4]
   # genes.return <- subset(summaryDt, component == "H")[, 1]
   to.return <- data.frame(p_val, row.names = genes.return)
+  to.return2 <- data.frame(varlogfc, row.names=varlogfcgenes.return)
+  print('make dataframe')
+  to.return <- merge(to.return, to.return2, by="row.names") 
+  print('merge dataframe')
+  write.csv(to.return, 'finaldf.csv')
   return(to.return)
 }
 
