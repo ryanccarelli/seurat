@@ -1377,6 +1377,7 @@ MASTDETest <- function(
   zlmCond <- MAST::zlm(formula = fmla, sca = sca, ...)
   summaryCond <- summary(object = zlmCond, doLRT = 'conditionGroup2')
   summaryDt <- summaryCond$datatable
+  print(summaryDt)
   # fcHurdle <- merge(
   #   summaryDt[contrast=='conditionGroup2' & component=='H', .(primerid, `Pr(>Chisq)`)], #hurdle P values
   #   summaryDt[contrast=='conditionGroup2' & component=='logFC', .(primerid, coef, ci.hi, ci.lo)], by='primerid'
@@ -1387,8 +1388,7 @@ MASTDETest <- function(
   # p_val <- subset(summaryDt, component == "H")[, 4]
   # genes.return <- subset(summaryDt, component == "H")[, 1]
   to.return <- data.frame(p_val, row.names = genes.return)
-  # return(to.return)
-  return(summaryDt)
+  return(to.return)
 }
 
 # compare two negative binomial regression models
