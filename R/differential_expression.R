@@ -675,9 +675,11 @@ FindMarkers.default <- function(
       yes = "avg_diff",
       no = "avg_logFC"
     )
+    print('isnullreduction')
     de.results[, diff.col] <- total.diff[rownames(x = de.results)]
     de.results <- cbind(de.results, data.alpha[rownames(x = de.results), , drop = FALSE])
   } else {
+    print('else')
     diff.col <- "avg_diff"
     de.results[, diff.col] <- total.diff[rownames(x = de.results)]
   }
@@ -687,7 +689,9 @@ FindMarkers.default <- function(
   if (test.use == "roc") {
     de.results <- de.results[order(-de.results$power, -de.results[, diff.col]), ]
   } else {
+    print('secondelse')
     de.results <- de.results[order(de.results$p_val, -de.results[, diff.col]), ]
+    print('results')
     de.results$p_val_adj = p.adjust(
       p = de.results$p_val,
       method = "bonferroni",
