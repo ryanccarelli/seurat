@@ -1379,9 +1379,9 @@ MASTDETest <- function(
   summaryDt <- summaryCond$datatable
   write.csv(data.frame(summaryDt), 'fullsummary.csv')
   print('summarized')
-  logfc <- MAST::logFC(zlmCond, contrast0='conditionGroup2')
+  logfc <- MAST::logFC(zlmCond)
   print('logfc')
-  logfc2 <- MAST::getLogFC(zlmCond, contrast0='conditionGroup2')
+  logfc2 <- MAST::getLogFC(zlmCond)
   print('logfc2')
   write.csv(data.frame(logfc), 'logfc.csv')
   write.csv(logfc2, 'logfc2.csv')
