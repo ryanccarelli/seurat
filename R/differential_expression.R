@@ -1379,8 +1379,10 @@ MASTDETest <- function(
   summaryDt <- summaryCond$datatable
   print(summaryDt)
   write.csv(data.frame(summaryDt), 'fullsummary.csv')
-  logfc <- MAST::logFC(zlmCond)
+  logfc <- MAST::logFC(zlmCond, contrast0='conditionGroup2')
+  logfc2 <- MAST::getLogFC(zlmCond, contrast0='conditionGroup2')
   write.csv(data.frame(logfc), 'logfc.csv')
+  write.csv(data.frame(logfc2), 'logfc2.csv')
   covariancec <- MAST::vcov(zlmCond, 'C')
   covarianced <- MAST::vcov(zlmCond, 'D')
   write.csv(data.frame(covariancec), 'covariancec.csv')
