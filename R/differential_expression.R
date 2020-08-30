@@ -675,8 +675,8 @@ FindMarkers.default <- function(
       yes = "avg_diff",
       no = "avg_logFC"
     )
-    print('isnullreduction')
     de.results[, diff.col] <- total.diff[rownames(x = de.results)]
+    print('isnullreduction')
     de.results <- cbind(de.results, data.alpha[rownames(x = de.results), , drop = FALSE])
   } else {
     print('else')
@@ -1403,10 +1403,10 @@ MASTDETest <- function(
   to.return <- data.frame(p_val, row.names = genes.return)
   to.return2 <- data.frame(varlogfc, row.names = varlogfcgenes.return)
   print('make dataframe')
-  to.return <- merge(to.return, to.return2, by="row.names") 
+  # to.return <- merge(to.return, to.return2, by="row.names") 
   print('merge dataframe')
-  write.csv(to.return, 'finaldf.csv')
-  return(to.return)
+  # write.csv(to.return, 'finaldf.csv')
+  return(to.return2)
 }
 
 # compare two negative binomial regression models
