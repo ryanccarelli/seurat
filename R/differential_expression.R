@@ -1378,6 +1378,7 @@ MASTDETest <- function(
   summaryCond <- summary(object = zlmCond, doLRT = 'conditionGroup2')
   summaryDt <- summaryCond$datatable
   print(summaryDt)
+  write.csv(data.frame(summaryDt), 'fullsummary.csv')
   # fcHurdle <- merge(
   #   summaryDt[contrast=='conditionGroup2' & component=='H', .(primerid, `Pr(>Chisq)`)], #hurdle P values
   #   summaryDt[contrast=='conditionGroup2' & component=='logFC', .(primerid, coef, ci.hi, ci.lo)], by='primerid'
