@@ -1402,6 +1402,7 @@ MASTDETest <- function(
   # genes.return <- subset(summaryDt, component == "H")[, 1]
   to.return <- data.frame(p_val, row.names = genes.return)
   to.return2 <- data.frame(varlogfc, row.names = varlogfcgenes.return)
+  colnames(to.return2)[which(names(to.return2) == "varlogfc")] <- "p_val"
   print('make dataframe')
   # to.return <- merge(to.return, to.return2, by="row.names") 
   print('merge dataframe')
