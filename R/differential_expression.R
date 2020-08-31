@@ -1385,6 +1385,7 @@ MASTDETest <- function(
   print('summarized')
   logfc <- MAST::logFC(zlmCond)
   logfc2 <- MAST::getLogFC(zlmCond)
+  write.csv(logfc2, 'logfc2.csv')
   print('logfc2')
   # covariancec <- MAST::vcov(zlmCond, 'C')
 
